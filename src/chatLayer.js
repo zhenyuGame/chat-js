@@ -13,14 +13,28 @@ var chatLayer = cc.Layer.extend({
         chatLayer.setPosition(cc.p(size.width/2,size.height/2));
 
         this.addChild(chatLayer);
-
-        //text1 = ccui.helper.seekWidgetByName(fontScene.node,"test1");
-
+        this.node = chatLayer;
     },
 
     onEnter : function(){
 
         this._super();
+
+        this.init();
+    },
+
+    init : function(){
+
+        this.initLogin();
+    },
+
+    initLogin : function(){
+
+        var panel_login = ccui.helper.seekWidgetByName(this.node,"Panel_login");
+        var btn_login = ccui.helper.seekWidgetByName(this.node,"btn_login");
+        btn_login.addClickEventListener(function(){
+            panel_login.setVisible(false);
+        });
     },
 
     onExit : function(){
